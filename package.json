@@ -8,8 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-less": "^1.0.1",
+    "antd": "^4.2.2",
+    "babel-plugin-import": "^1.13.0",
+    "less": "^3.11.1",
     "next": "9.4.0",
+    "null-loader": "^4.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }
