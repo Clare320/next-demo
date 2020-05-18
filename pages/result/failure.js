@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Result, Button, Typography } from 'antd'
 import { CloseCircleOutlined } from '@ant-design/icons'
 import SideMenuLayout from '../../layouts/side-menu-layout'
@@ -6,7 +7,7 @@ const { Paragraph, Text } = Typography
 
 export default function Failure () {
   return (
-    <SideMenuLayout title='失败页'>
+    <SideMenuLayout title='失败页' menuKey='result/failure'>
       <Result
         status='error'
         title='发布失败'
@@ -21,7 +22,7 @@ export default function Failure () {
             <Text>提交内容有以下错误：</Text>
           </Paragraph>
           <Paragraph>
-            <CloseCircleOutlined />您的账户已被冻结 <a>立即解冻</a>
+            <CloseCircleOutlined />您的账户已被冻结 <Link href='/pages/sale'><a>立即解冻</a></Link>
           </Paragraph>
           <Paragraph>
             <CloseCircleOutlined />您的账户权限不够 <a>申请权限</a>

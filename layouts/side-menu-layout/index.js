@@ -7,7 +7,7 @@ import Head from 'next/head'
 const { Header, Footer, Sider, Content } = Layout
 const { SubMenu } = Menu
 
-export default function SideMenuLayout ({ home = true, title, children }) {
+export default function SideMenuLayout ({ home = true, title, children, menuKey }) {
   const [collapsed, setCollapsed] = React.useState(false)
   const toggle = () => {
     setCollapsed(value => !value)
@@ -28,7 +28,7 @@ export default function SideMenuLayout ({ home = true, title, children }) {
       </Head>
       <Sider collapsible trigger={null} collapsed={collapsed}>
         <div className={styles.logo}><span className={styles.logoName}>马办</span></div>
-        <Menu theme='light' mode='inline' defaultSelectedKeys={['1']} onClick={handleMenuClick}>
+        <Menu theme='light' mode='inline' defaultOpenKeys={[(menuKey && menuKey.substring(0, menuKey.indexOf('/'))) || '']} defaultSelectedKeys={[menuKey || '']} onClick={handleMenuClick}>
           <SubMenu
             key='dashboard'
             icon={<DashboardOutlined />}
@@ -52,6 +52,7 @@ export default function SideMenuLayout ({ home = true, title, children }) {
           >
             <Menu.Item key='result/success'>成功页</Menu.Item>
             <Menu.Item key='result/failure'>失败页</Menu.Item>
+            <Menu.Item key='result/stars'>测试500</Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
