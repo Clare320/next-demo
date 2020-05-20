@@ -1,13 +1,13 @@
 import React from 'react'
 import { Layout, Menu, Button } from 'antd'
-import { DashboardOutlined, MenuFoldOutlined, MenuUnfoldOutlined, BellOutlined } from '@ant-design/icons'
+import { DashboardOutlined, MenuFoldOutlined, MenuUnfoldOutlined, BellOutlined, ProfileOutlined } from '@ant-design/icons'
 import styles from './index.less'
 import Router from 'next/router'
 import Head from 'next/head'
 const { Header, Footer, Sider, Content } = Layout
 const { SubMenu } = Menu
 
-export default function SideMenuLayout ({ home = true, title, children, menuKey }) {
+export default function SideMenuLayout({ home = true, title, children, menuKey }) {
   const [collapsed, setCollapsed] = React.useState(false)
   const toggle = () => {
     setCollapsed(value => !value)
@@ -17,7 +17,7 @@ export default function SideMenuLayout ({ home = true, title, children, menuKey 
     Router.push('/' + key)
   }
   const goHome = () => {
-    // Router.push('/')
+    Router.push('/')
   }
 
   return (
@@ -53,6 +53,13 @@ export default function SideMenuLayout ({ home = true, title, children, menuKey 
             <Menu.Item key='result/success'>成功页</Menu.Item>
             <Menu.Item key='result/failure'>失败页</Menu.Item>
             <Menu.Item key='result/stars'>测试500</Menu.Item>
+          </SubMenu>
+          <SubMenu
+            key='detail'
+            icon={<ProfileOutlined />}
+            title='详情页'
+          >
+            <Menu.Item key='detail/basicdetail'>基础详情</Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
