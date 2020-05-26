@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import SideMenuLayout from '../../layouts/side-menu-layout'
 import { Button, Result, Typography } from 'antd'
 import { CloseCircleOutlined } from '@ant-design/icons'
-import SideMenuLayout from '../../layouts/side-menu-layout'
 
 const { Paragraph, Text } = Typography
 

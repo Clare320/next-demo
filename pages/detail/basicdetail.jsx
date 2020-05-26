@@ -1,6 +1,6 @@
-import SideMenuLayout from '../../layouts/side-menu-layout'
 import Link from 'next/link'
 import { Descriptions, Divider, Table } from 'antd'
+import SideMenuLayout from '../../layouts/side-menu-layout'
 
 export default function BasicDetail ({ detail }) {
   const { refund, user, refundList } = detail

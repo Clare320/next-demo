@@ -7,7 +7,7 @@ import Head from 'next/head'
 const { Header, Footer, Sider, Content } = Layout
 const { SubMenu } = Menu
 
-export default function SideMenuLayout({ home = true, title, children, menuKey }) {
+export default function SideMenuLayout ({ home = true, title, children, menuKey }) {
   const [collapsed, setCollapsed] = React.useState(false)
   const toggle = () => {
     setCollapsed(value => !value)
