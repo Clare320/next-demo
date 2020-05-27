@@ -1,5 +1,6 @@
 const express = require('express')
 const next = require('next')
+const { parse } = require('url')
 const cacheableResponse = require('cacheable-response')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -23,6 +24,11 @@ const ssrCache = cacheableResponse({
 
 app.prepare().then(() => {
   const server = express()
+
+  // 处理自定义路由
+  server.get('/pages/sale', async (req, res) => {
+    return app.render(req, res, '/about', req.query)
+  })
 
   // 这一步可以通过配置需缓存的路由数组循环生成
   server.get('/', (req, res) => ssrCache({ req, res, pagePath: '/' }))

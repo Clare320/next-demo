@@ -2,6 +2,16 @@
 
 const withNextAntdLess = require('./next-antd-less.config')
 module.exports = withNextAntdLess({
+  pageExtensions: ['js', 'jsx'],
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      ...defaultPathMap,
+      '/apply': { page: '/about', query: {} }
+    }
+  },
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
@@ -9,6 +19,9 @@ module.exports = withNextAntdLess({
   },
   lessLoaderOptions: {
     javascriptEnabled: true
+  },
+  webpack: (config, options) => {
+    return config
   }
 })
 
