@@ -1,9 +1,29 @@
+import useSWR from 'swr'
 import Link from 'next/link'
+import Head from 'next/head'
 import { Descriptions, Divider, Table } from 'antd'
 import SideMenuLayout from '../../layouts/side-menu-layout'
 
-export default function BasicDetail ({ detail }) {
-  const { refund, user, refundList } = detail
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
+function PlaceHolder ({ content }) {
+  return (
+    <>
+      <Head><title>详情</title></Head>
+      <div>{content}</div>
+    </>
+  )
+}
+
+export default function BasicDetail () {
+  const { data, error } = useSWR('/api/basicdetail', fetcher)
+
+  if (error) return <PlaceHolder content='Failed to laod' />
+  if (!data) {
+    return <PlaceHolder content='Loading...' />
+  }
+
+  const { refund, user, refundList } = data
   const { pickUpOrderId, state, saleOrderId, subOrderId } = refund
   const { name, tel, express, address, remarks } = user
   const refundListResult = (() => {
@@ -85,13 +105,13 @@ export default function BasicDetail ({ detail }) {
   )
 }
 
-export async function getStaticProps (context) {
-  const data = await fetch('http://localhost:3000/api/basicdetail')
-  const detail = await data.json()
+// export async function getStaticProps (context) {
+//   const data = await fetch('/api/basicdetail')
+//   const detail = await data.json()
 
-  return {
-    props: {
-      detail
-    }
-  }
-}
+//   return {
+//     props: {
+//       detail
+//     }
+//   }
+// }
