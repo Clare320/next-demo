@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const withNextAntdLess = require('./next-antd-less.config')
 
 module.exports = withNextAntdLess({
-  assetPrefix: isProd ? 'https://clare320.github.io/kede-next-example' : '',
+  assetPrefix: isProd ? '/next-demo/' : '',
   pageExtensions: ['js', 'jsx'],
   exportPathMap: async function (
     defaultPathMap,
